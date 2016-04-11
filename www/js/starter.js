@@ -38,8 +38,6 @@ define(function(require) {
         // function, we must explicitly call 'app.receivedEvent(...);'
         onDeviceReady: function() {
             starter.receivedEvent('deviceready')
-            var db = require('db');
-            db.save_achieved(['a','b']);
 
         },
 

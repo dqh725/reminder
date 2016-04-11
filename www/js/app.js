@@ -12,7 +12,7 @@ define(['angularjs','db'], function(angularjs, db){
 
 	var updateDB=function(list, achieved){
 		db.save_todo(list);
-		db.save_todo(achieved);
+		db.save_achieved(achieved);
 	};
 	app.controller('myCtrl', function($scope, list, achieved){
 		$scope.list = list;
