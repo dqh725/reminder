@@ -18,6 +18,9 @@
  */
 
  @import 'list.css';
+ @import 'bootstrap.min.css';
+ @import 'font-awesome-custom.css';
+
 
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -51,12 +54,12 @@ body {
 /* Portrait layout (default) */
 .app {
     position:absolute;             /* position in the center of the screen */
-    left:5%;
+    left:10%;
     top:5%;
-    right:5%;
+    right:10%;
     bottom: 5%;
     height:90%;                   /* text area height */
-    width:90%;                   /* text area width */
+    width:80%;                   /* text area width */
     text-align:center;
 }
 
@@ -94,13 +97,45 @@ h1 {
     display:block;
 }
 
-.received input{
-    width:80%;
-    height:30px;
-    margin:30px 0 0 0;
-    font-size: 20px;
+.group{
+    width:100%;
+    display: table;
+    margin-bottom: 5px;
 }
 
+.group input{
+    border-radius: 2px;
+    border: none;
+    padding: 2px 15px 2px;
+    height:30px;
+    font-size: 20px;
+    width: inherit;
+
+    display: table-cell; 
+}
+
+.group .toggle{
+    display: table-cell; 
+    width:30px;
+    height:30px;
+    background-color: #fff;
+    border-radius: 2px;
+    border:1px #f1f1f1 solid;
+}
+
+.group .toggle i{
+    width:30px;
+    font-size:20px;
+    height:30px;
+}
+i.inactive{
+    background-color: #fff;
+    color: #505050;
+}
+i.active{
+    background-color: orange;
+    color: #fff;
+}
 
 
 

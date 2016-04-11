@@ -3,14 +3,10 @@ require.config({
 	paths: {
 		jquery: 'lib/jquery-1.12.0.min',
 		angularjs: 'lib/angular-1.5.3.min'
-	}
+	},
 });
 
 
-require(['index'], function (index) {
+require(['index', 'app'], function (index, app) {
     index.initialize();
-});
-
-require(['app'], function(app){
-
 });

@@ -35,19 +35,36 @@
       <div id="deviceready" class="blink">
 
         <div class="received" ng-controller="myCtrl">
+          <div class="group">
+            <div class="toggle inactive" ng-click="toggle()">
+              <i class="fa fa-angle-down fa-stack-1x"></i>
+            </div>
 
-
-          <input type="text" class="input-field" placeholder="需要做的事？" ng-keyup="$event.keyCode == 13 ? addEvent(todo) : null" ng-model="todo">
-            
+            <input type="text" class="input-field" placeholder="需要做的事？" ng-keyup="$event.keyCode == 13 ? addEvent(todo) : null" ng-model="todo">
+          </div>   
           <ul id="todo-list" ng-show="is_todo()">
-            <li ng-repeat="li in list track by $index" ng-click='achieve($index)' >{{li}}</li>
+            <li ng-repeat="item in list track by $index" >
+              <input type="checkbox" ng-checked="item.selected" ng-model='item.selected'>
+              <span ng-click='achieve($index)'>{{item.todo}}</span>
+            </li>
+            <li class="row" ng-show="list.length>0">
+              <div class="col-xs-6">
+                <a ng-click="achieve_chosen(list)">achieve</a>
+              </div>
+              <div class="col-xs-6">
+                <a ng-click="delete_chosen(list)">delete </a>
+              </div>
+            </li>
           </ul>
           <ul id="achieved-list" ng-show="is_achieve()">
-            <li ng-repeat="li in achieved track by $index" >{{li}}</li>
+            <li ng-repeat="li in achieved track by $index" >
+
+              <span>{{li}}</span>
+            </li>
           </ul>
 
-          <button ng-click="show_todo()">要做的事</button>
-          <button ng-click="show_achieve()">做完的事</button>
+          <button class="btn btn-default btn-lg pull-left" ng-click="show_todo()">要做的事</button>
+          <button class="btn btn-success btn-lg pull-right" ng-click="show_achieve()">做完的事</button>
         </div>
       </div>
     </div>
