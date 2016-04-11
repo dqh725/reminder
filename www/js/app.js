@@ -85,7 +85,5 @@ define(['angularjs','db'], function(angularjs, db){
 
 	});
 
-
-
 	return app;
 });
