@@ -3,7 +3,13 @@ define(function(require){
 	var divider="$$$"
 	var db={
 		get_todo:function(){
-			var value= window.localStorage.getItem("TODO").split(divider);
+			var value= window.localStorage.getItem("TODO");
+			if(value!=null){
+				value = value.split(divider);
+			}
+			else{
+				return [];
+			}
 			formatted=[];
 			for(var i=0;i<value.length; i++){
 				if(value[i]!="")
@@ -19,7 +25,13 @@ define(function(require){
 		},
 		get_achieved:function(){
 			var value = window.localStorage.getItem("DONE");
-			return value.split(divider)
+			if(value!=null){
+				value = value.split(divider);
+			}
+			else{
+				return [];
+			}
+			return value
 		},
 		save_todo:function(formatted_list){
 			raw=[]
