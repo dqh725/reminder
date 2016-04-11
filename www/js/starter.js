@@ -17,7 +17,10 @@
  * under the License.
  */
 define(function(require) {
-    var index = {
+
+
+
+    var starter = {
         // Application Constructor
         initialize: function() {
             this.bindEvents();
@@ -34,19 +37,23 @@ define(function(require) {
         // The scope of 'this' is the event. In order to call the 'receivedEvent'
         // function, we must explicitly call 'app.receivedEvent(...);'
         onDeviceReady: function() {
-            app.receivedEvent('deviceready');
+            starter.receivedEvent('deviceready')
+            var db = require('db');
+            db.save_achieved(['a','b']);
+
         },
+
         // Update DOM on a Received Event
         receivedEvent: function(id) {
             var parentElement = document.getElementById(id);
             var listeningElement = parentElement.querySelector('.listening');
             var receivedElement = parentElement.querySelector('.received');
 
-            listeningElement.setAttribute('style', 'display:none;');
-            receivedElement.setAttribute('style', 'display:block;');
+            // listeningElement.setAttribute('style', 'display:none;');
+            // receivedElement.setAttribute('style', 'display:block;');
 
             console.log('Received Event: ' + id);
         }
     };
-    return index;
+    return starter;
 });
