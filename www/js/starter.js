@@ -36,8 +36,24 @@ define(function(require) {
         // The scope of 'this' is the event. In order to call the 'receivedEvent'
         // function, we must explicitly call 'app.receivedEvent(...);'
         onDeviceReady: function() {
-            starter.receivedEvent('deviceready')
+            try{
+                /*
+                 * bootrap angular
+                 */
+                require("angularjs");
+                angular.element(document).ready(function() {
+                    angular.bootstrap(document, ['myApp']);
+                    
+                    /*
+                     * Nachverarbeitung laden
+                     */
+                    starter.receivedEvent('deviceready');
 
+                });
+            }catch(e){
+                console.log(e);
+                exceptionHandler(e);
+            }
         },
 
         // Update DOM on a Received Event

@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Reminder</title>
   </head>
-  <body ng-app="myApp">
+  <body>
     <div class="app">
       <h1> 今天的计划 </h1>
       <div id="deviceready" class="blink">
@@ -40,7 +40,7 @@
               <i class="fa fa-angle-down fa-stack-1x"></i>
             </div>
 
-            <input type="text" class="input-field" placeholder="需要做的事？" ng-keyup="$event.keyCode == 13 ? addEvent(todo) : null" ng-model="todo">
+            <input type="text" class="input-field" placeholder="需要做的事？" ng-keyup="$event.keyCode == 13 ? addEvent(input_value) : null" ng-model="input_value">
           </div>   
           <ul id="todo-list" ng-show="is_todo()">
             <li ng-repeat="item in list track by $index" >
