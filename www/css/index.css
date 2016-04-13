@@ -30,8 +30,8 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-color:#fff;
+/*    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-gradient(
@@ -40,7 +40,7 @@ body {
         left bottom,
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
-    );
+    );*/
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -73,60 +73,53 @@ body {
 h1 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin:15px;
     overflow:visible;
     padding:0px;
     text-align:center;
 }
 
-.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
-}
-
-.event.listening {
-    background-color:#333333;
-    display:block;
-}
-
-.received {
-    display:block;
-}
 
 .group{
     width:100%;
     display: table;
-    margin-bottom: 5px;
+}
+.input-bar{
+    border:1px solid #505050;
+    padding:5px;
+    background-color: #505050; 
 }
 
 .group input{
     border-radius: 2px;
     border: none;
-    padding: 2px 15px 2px;
-    height:30px;
+    padding: 5px 15px 5px;
+    height:40px;
     font-size: 20px;
     width: inherit;
-
     display: table-cell; 
 }
 
-.group .toggle{
+.group .toggle, .group .btn{
+
     display: table-cell; 
-    width:30px;
-    height:30px;
+    width:40px;
+    height:40px;
     background-color: #fff;
     border-radius: 2px;
     border:1px #f1f1f1 solid;
 }
+.group .btn{
+    width:60px;
+    background-color: orange;
+    color: #fff;
+}
 
 .group .toggle i{
-    width:30px;
-    font-size:20px;
-    height:30px;
+    margin-left: 5px;
+    width:40px;
+    font-size:28px;
+    height:40px;
 }
 i.inactive{
     background-color: #fff;
@@ -140,6 +133,14 @@ i.active{
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+
+.date{
+    color: orange;
+    float: right;
+    font-size: 20px;
+}
+
 
 /*@keyframes fade {
     from { opacity: 1.0; }
