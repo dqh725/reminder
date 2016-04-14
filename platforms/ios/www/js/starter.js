@@ -16,13 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(['angularRoute', 'app'],function(angularRoute,app) {
+define(['angularjs', 'app'],function(angularjs,app) {
 
     var starter = {
         // Application Constructor
         initialize: function() {
             this.bindEvents();
-
         },
         // Bind Event Listeners
         //
@@ -36,8 +35,16 @@ define(['angularRoute', 'app'],function(angularRoute,app) {
         // The scope of 'this' is the event. In order to call the 'receivedEvent'
         // function, we must explicitly call 'app.receivedEvent(...);'
         onDeviceReady: function() {
-            angular.bootstrap(document, ['myApp']);
+            //angular.bootstrap(document, ['myApp']);
 
+            try { 
+                // angular.element(document).ready(function() {
+                angular.bootstrap(document, ['myApp']);
+                // });
+
+            } catch(err){
+                alert(err.message);
+            } 
             starter.receivedEvent('deviceready');
         },
 
@@ -47,7 +54,7 @@ define(['angularRoute', 'app'],function(angularRoute,app) {
             // listeningElement.setAttribute('style', 'display:none;');
             // receivedElement.setAttribute('style', 'display:block;');
 
-            alert('Received Event: ' + id);
+            //alert('Received Event: ' + id);
         }
     };
     return starter;

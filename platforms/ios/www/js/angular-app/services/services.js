@@ -5,7 +5,7 @@ define(['angularjs'],function(angularjs){
 		self.db = null;
 		self.list = [{'todo':"asdf"},{'todo':"adflkjasd"}]
 		self.init = function(){
-			self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', -1);
+			self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', 2000000);
 			
       angular.forEach(DB_CONFIG.tables, function(table) {
           var columns = [];

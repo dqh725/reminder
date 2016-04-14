@@ -61,7 +61,7 @@ define(
   app.controller('itemCtrl', itemCtrl);
 
   app.config(['$routeProvider',
-    function($routeProvider) {
+    function($routeProvider, $compileProvider) {
       $routeProvider.
         when('/', {
           templateUrl: 'js/angular-app/views/list.html',
@@ -70,11 +70,9 @@ define(
         when('/:id', {
           templateUrl: 'js/angular-app/views/item-detail.html',
           controller: 'itemCtrl'
-        }).
-        otherwise({
-          redirectTo: 'js/angular-app/views/item-detail.html',
-          controller: 'itemCtrl'
-        });
+        })
+        .otherwise({ redirectTo: '/' });;
+
     }]);
 
 	return app;

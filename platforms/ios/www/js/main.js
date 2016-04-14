@@ -21,5 +21,7 @@ require.config({
 
 require(['starter','app'],function (starter,app) {
     starter.initialize();
+    // console.log(angular.bootstrap(document, ['myApp']));
+
 });
 
