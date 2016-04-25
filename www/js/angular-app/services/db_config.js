@@ -9,7 +9,7 @@ define(['angularjs'],function(angularjs){
 					{name: 'id', type :'integer primary key'},
 					{name: 'todo', type: 'text'},
 					{name: 'description', type: 'text'},
-					{name: 'finished', type: 'boolean'},
+					{name: 'finished', type: 'integer'},
 					{name: 'date', type: 'integer'}
 				]
 			}

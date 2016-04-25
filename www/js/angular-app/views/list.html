@@ -10,12 +10,12 @@
 
             <input type="text" class="input-field" placeholder="What need to be done？" ng-keyup="$event.keyCode == 13 ? addEvent(todo) : null" ng-model="todo">
             
-            <div class="btn" ng-click="addEvent(input_value)">Add
+            <div class="btn" ng-click="addEvent(todo)">Add
             </div>
 
           </div>  
           <ul id="todo-list" ng-show="is_todo()">
-            <li ng-repeat="item in list | filter:{finished:false}">
+            <li ng-repeat="item in list | filter:{finished:0}">
               <!-- <todo-list info="item"></todo-list> -->
               <input type="checkbox" ng-checked="item.selected" ng-model='item.selected'>
               <a class="ng-cloak" href="#/{{item.id}}">{{item.todo| limitTo : 20}}</a>
@@ -30,7 +30,7 @@
             </li>
           </ul>
           <ul id="achieved-list" ng-hide="is_todo()">
-            <li ng-repeat="item in list | filter:{finished:true}" >
+            <li ng-repeat="item in list | filter:{finished:1}" >
 
               <a class="ng-cloak" href="#/{{item.id}}">{{item.todo}}</a>
             </li>

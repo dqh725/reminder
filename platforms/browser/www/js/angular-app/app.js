@@ -41,17 +41,24 @@ define(
         });
     };
     self.insert=function(item){
-      DB.insert(item);
-    }
+        return DB.insert(item)
+        .then(function(result){
+            return result.insertId;
+        });
+    };
 
     self.remove = function(id){
       var q ="DELETE FROM Todos WHERE id = "+id
       DB.query(q);
-    }
+    };
 
     self.update = function(item){
       DB.update(item);
-    }
+      // return DB.update(item)
+      // .then(function(result){
+      //     return result;
+      // });
+    };
     
     return self;
   });

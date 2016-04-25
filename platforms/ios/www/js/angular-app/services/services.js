@@ -3,21 +3,20 @@ define(['angularjs'],function(angularjs){
 	var DB = function($q, DB_CONFIG){
 		var self = this;
 		self.db = null;
-		self.list = [{'todo':"asdf"},{'todo':"adflkjasd"}]
+    self.lastId;
 		self.init = function(){
-			self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', 2000000);
-			
+       //self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', 2000000);
+		  self.db = window.sqlitePlugin.openDatabase({name: 'my.db', location: 'default'});
       angular.forEach(DB_CONFIG.tables, function(table) {
           var columns = [];
 
           angular.forEach(table.columns, function(column) {
               columns.push(column.name + ' ' + column.type);
           });
-
+          var q = 'DROP TABLE IF EXISTS TODOS';
+          self.query(query);
           var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
           self.query(query);
-          var q ="DELETE FROM Todos WHERE id = 4";
-          self.query(q);
           console.log('Table ' + table.name + ' initialized');
       });
 		};
@@ -58,18 +57,30 @@ define(['angularjs'],function(angularjs){
         return result.rows.item(0);
     };
 
+
     self.insert = function(item){
+
+      var deferred = $q.defer();
   	  self.db.transaction(function (tx) {  
 				tx.executeSql(
 					'INSERT INTO TODOS (todo, description, finished, date) VALUES (?, ?, ?, ?)',
-					[item.todo, item.description, item.finished, item.date]
+					[item.todo, item.description, item.finished, item.date],
+          function(tx, result){
+            deferred.resolve(result)
+          },
+          function(e){
+            console.log(e.message);
+            deferred.reject(e)
+          }
 				);
 
-			}, function(e){console.log(e.message)}, function(){console.log()});
+			});
+      return deferred.promise;
     };
 
 
     self.update = function(item){
+      alert("before insert into db:"+JSON.stringify(item));
       self.db.transaction(function (tx) {  
         tx.executeSql(
           'UPDATE TODOS SET todo=?, description=?, finished=? WHERE id=?', 

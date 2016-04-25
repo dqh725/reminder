@@ -22,6 +22,8 @@ define(['angularjs', 'app'],function(angularjs,app) {
         // Application Constructor
         initialize: function() {
             this.bindEvents();
+            //angular.bootstrap(document, ['myApp']);
+
         },
         // Bind Event Listeners
         //

@@ -10,7 +10,7 @@ require.config({
 		itemCtrl: 'angular-app/controllers/itemCtrl',
 		angularRoute: 'lib/angular-route.min',
 		DB_CONFIG: 'angular-app/services/db_config',
-		DB: 'angular-app/services/services'
+		DB: 'angular-app/services/db'
 	},
 
 	shim:{

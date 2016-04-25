@@ -11,7 +11,7 @@ define(['angularjs'],function(angularjs) {
 
     todolist.all().then(function(results){
         $scope.list = results;
-        console.log($scope.list[0])
+        //console.log($scope.list[0])
     });
 
 		$scope.toggle=function(list){
@@ -26,13 +26,19 @@ define(['angularjs'],function(angularjs) {
 
 		$scope.addEvent = function(todo){
 			item={}
-			item.finished=false;
+			item.finished=0;
 			item.description="";
 			item.date=Date.now();
 			item.todo =todo;
-			$scope.list.push(item);
 			$scope.todo=null;
-			todolist.insert(item);
+			todolist.insert(item).then(function(insertId){
+        item.id= insertId;
+        $scope.list.push(item);
+        //console.log($scope.list[0])
+    	});
+
+
+
 		};
 
 		$scope.is_todo = function(){
@@ -53,15 +59,18 @@ define(['angularjs'],function(angularjs) {
 		};
 
 		$scope.achieve_chosen = function(list){
-		//don't dynamically delete item in the list. instead create a new array.
-			for(var i=0; i< list.length;i++){
+		
+			for(var i=0; i< list.length; i++){
 				if(list[i].selected==true){
-					$scope.list[i].finished= true;
-					console.log("start")
-					todolist.update($scope.list[i]);
-				}					
-			};
-			
+					list[i].finished=1;
+					console.log("start");
+					alert("now should be finished:"+list[i].finished);
+					todolist.update(list[i]);
+				}			
+			}
+			$scope.list = list;
+
+
 		};
 
 		$scope.delete_chosen = function(list){
